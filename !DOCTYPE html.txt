@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>صدقة جارية | الحاجة سعدية أحمد إبراهيم</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(to bottom, #eef7f1, #cfe6da);
+    color: #2c3e50;
+    text-align: center;
+}
+
+.container {
+    max-width: 750px;
+    margin: auto;
+    padding: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    margin-bottom: 30px;
+    animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(40px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+img {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #2ecc71;
+    box-shadow: 0 0 30px rgba(46,204,113,0.5);
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {box-shadow:0 0 20px rgba(46,204,113,0.4);}
+    50% {box-shadow:0 0 40px rgba(46,204,113,0.7);}
+    100% {box-shadow:0 0 20px rgba(46,204,113,0.4);}
+}
+
+h1 {color:#27ae60;}
+p {font-size:18px; line-height:2;}
+
+.ayah {
+    font-size: 20px;
+    transition: opacity 1s ease;
+    min-height: 120px;
+}
+
+button {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    border: none;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 15px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+footer {
+    font-size: 14px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- التعريف -->
+    <div class="card">
+        <img src="sadeya.jpg" alt="الحاجة سعدية أحمد إبراهيم">
+        <h1>صدقة جارية</h1>
+        <p>على روح الحاجة سعدية أحمد إبراهيم</p>
+        <p>اللهم اجعل هذا العمل نورًا لها في قبرها 🤍</p>
+    </div>
+
+    <!-- آيات متغيرة -->
+    <div class="card">
+        <h2>آيات من القرآن الكريم</h2>
+        <p id="ayah" class="ayah"></p>
+    </div>
+
+    <!-- أدعية -->
+    <div class="card">
+        <h2>دعاء</h2>
+        <p id="dua">
+            اللهم اغفر لها وارحمها، واجعل قبرها روضة من رياض الجنة 🤲
+        </p>
+        <button onclick="changeDua()">دعاء آخر</button>
+    </div>
+
+    <footer>
+        صدقة جارية • لا تنسوها من الدعاء 🤍
+    </footer>
+
+</div>
+
+<script>
+// آيات
+const ayat = [
+"﴿كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ﴾",
+"﴿وَبَشِّرِ الصَّابِرِينَ﴾",
+"﴿يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ * ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَرْضِيَّةً﴾",
+"﴿وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ﴾",
+"﴿إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾"
+];
+
+// أدعية
+const duas = [
+"اللهم آنس وحشتها وارحم غربتها 🤍",
+"اللهم اجعل القرآن شفيعًا لها 🌿",
+"اللهم اجعل قبرها نورًا وسرورًا 🤲",
+"اللهم اجمعنا بها في الفردوس الأعلى 🤍"
+];
+
+let ayahIndex = 0;
+const ayahEl = document.getElementById("ayah");
+
+function changeAyah() {
+    ayahEl.style.opacity = 0;
+    setTimeout(() => {
+        ayahEl.innerText = ayat[ayahIndex];
+        ayahEl.style.opacity = 1;
+        ayahIndex = (ayahIndex + 1) % ayat.length;
+    }, 1000);
+}
+
+// أول آية
+changeAyah();
+// تغيير تلقائي كل 6 ثواني
+setInterval(changeAyah, 6000);
+
+function changeDua() {
+    const i = Math.floor(Math.random() * duas.length);
+    document.getElementById("dua").innerText = duas[i];
+}
+</script>
+
+</body>
+</html>
